@@ -10,7 +10,7 @@ https://github.com/KaimingHe/resnet-1k-layers
 Then, the DenseNet model (densenet.lua) is copied from here:
 https://github.com/liuzhuang13/DenseNet
 
-The code is modified in the following ways:
+Then, the code is modified in the following ways:
 - Added command line option for replacing ReLU with BReLU
 - Added command line options for DenseNet
 - Use modelType command line option to decide learning rate decay for DenseNet
@@ -18,3 +18,38 @@ The code is modified in the following ways:
 - Added logging of command line options to file opt.txt
 - Added logging of model as text to model.txt
 - Commented out debug printout every batch
+
+
+Training recipes
+----------------
+
+### CIFAR-10
+
+To train ResNet-20 on CIFAR-10 with 2 GPUs:
+
+```bash
+th main.lua -dataset cifar10 -nGPU 2 -batchSize 128 -depth 20
+```
+
+To train ResNet-110 instead just change the `-depth` flag:
+
+```bash
+th main.lua -dataset cifar10 -nGPU 2 -batchSize 128 -depth 110
+```
+
+To train a pre-activation ResNet-1001 with BReLU with 1 GPU:
+
+```bash
+th main.lua -netType resnet-pre-act -depth 1001 -batchSize 64 -nGPU 1 -dataset cifar10 -nEpochs 200 -BReLU true
+```
+To train a ResNet110 with BReLU with 1 GPU:
+
+```bash
+th main.lua -netType resnet -depth 110 -batchSize 128 -nGPU 1 -dataset cifar10 -BReLU true
+```
+
+To train a DenseNet-190 with BReLU with 1 GPU:
+
+```bash
+th main.lua -netType densenet -depth 190 -growthRate 40 -nGPU 1 -dataset cifar10 -batchSize 64 -nEpochs 300 -optnet true -BReLU true
+```
