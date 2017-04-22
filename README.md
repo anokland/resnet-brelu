@@ -23,19 +23,19 @@ The current implementation of BReLU does not support training on multiple GPU's.
 
 Results with BReLU compared to ReLU on Cifar-10 with data augmentation:
 
-| Network         | ReLU           | BReLU run 1   | BReLU run 2 | BReLU run 3 | BReLU run 4 | BReLU run 5 | BreLU         |
-| :---            | :---:          | :---:         | :---:       | :---:       | :---:       | :---:       | ---:          |
-| ResNet-110      | 6.61 / 6.41 %  | 5.724 %       |             |             |             |             | 5.725 +- 0.0% |
-| DenseNet-BC-100 | 4.51 %         |               |             |             |             |             |               |
-| DenseNet-BC-190 | 3.46 %         |               |             |             |             |             |               |
+| Network         | ReLU           | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
+| :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
+| ResNet-110      | 6.61 / 6.41    | 5.724     |         |         |         |         | 5.725 +- 0.0 |
+| DenseNet-BC-100 | 4.51           |           |         |         |         |         |              |
+| DenseNet-BC-190 | 3.46 (SOTA)    |           |         |         |         |         |              |
 
 Results with BReLU compared to ReLU on Cifar-100 with data augmentation:
 
-| Network         | ReLU           | BReLU run 1   | BReLU run 2 | BReLU run 3 | BReLU run 4 | BReLU run 5 | BreLU         |
-| :---            | :---:          | :---:         | :---:       | :---:       | :---:       | :---:       | ---:          |
-| ResNet-110      | 27.22 %        |               |             |             |             |             | 0.0 +- 0.0%   |
-| DenseNet-BC-100 | 22.27 %        |               |             |             |             |             |               |
-| DenseNet-BC-190 | 17.18 %        |               |             |             |             |             |               |
+| Network         | ReLU           | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
+| :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
+| ResNet-110      | 27.22          |           |         |         |         |         | 0.0 +- 0.0   |
+| DenseNet-BC-100 | 22.27          |           |         |         |         |         |              |
+| DenseNet-BC-190 | 17.18 (SOTA)   |           |         |         |         |         |              |
 
 
 Training recipes
@@ -64,6 +64,12 @@ To train a ResNet110 with BReLU with 1 GPU:
 
 ```bash
 th main.lua -netType resnet -depth 110 -batchSize 128 -nGPU 1 -dataset cifar10 -BReLU true
+```
+
+To train a DenseNet-100 with BReLU with 1 GPU:
+
+```bash
+th main.lua -netType densenet -depth 100 -growthRate 12 -nGPU 1 -dataset cifar10 -batchSize 64 -nEpochs 300 -optnet true -BReLU true
 ```
 
 To train a DenseNet-190 with BReLU with 1 GPU:
