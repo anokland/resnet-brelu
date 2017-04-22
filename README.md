@@ -19,6 +19,16 @@ Then, the code is modified in the following ways:
 - Added logging of model as text to model.txt
 - Commented out debug printout every batch
 
+The current implementation of BReLU does not support training on multiple GPU's.
+
+Results with BReLU compared to ReLU on Cifar-10:
+
+| Network         | ReLU           | BReLU run 1   | BReLU run 2 | BReLU run 3 | BReLU run 4 | BReLU run 5 | BreLU         |
+| :---            | :---:          | :---:         | :---:       | :---:       | :---:       | :---:       | ---:          |
+| ResNet-110      | 6.61 / 6.41 %  | 5.724 %       |             |             |             |             | 5.725 +- 0.0% |
+| DenseNet-BC-100 | 4.51 %         |               |             |             |             |             |               |
+| DenseNet-BC-190 | 3.46 %         |               |             |             |             |             |               |
+
 
 Training recipes
 ----------------
