@@ -11,13 +11,13 @@ Then, the DenseNet model (densenet.lua) is copied from here:
 https://github.com/liuzhuang13/DenseNet
 
 Then, the code is modified in the following ways:
-- Added command line option for replacing ReLU with BReLU
-- Added command line options for DenseNet
-- Use modelType command line option to decide learning rate decay for DenseNet
+- Added command line option for replacing ReLU with BReLU (`BReLU`)
+- Added command line options for DenseNet (`growthRate`, `dropRate` and `bottleneck`)
+- Use command line option to decide learning rate decay for DenseNet as prescribed (`modelType`)
 - Added logging of training and test error to log.txt every epoch
-- Added logging of command line options to file opt.txt
-- Added logging of model as text to model.txt
-- Commented out debug printout every batch
+- Added logging of command line options to file opt.txt at startup
+- Added logging of model structure as text to model.txt at startup
+- Commented out debug printout every batch of training and validation
 
 The current implementation of BReLU does not support training on multiple GPU's.
 
