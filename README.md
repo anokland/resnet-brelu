@@ -21,13 +21,21 @@ Then, the code is modified in the following ways:
 
 The current implementation of BReLU does not support training on multiple GPU's.
 
-Results with BReLU compared to ReLU on Cifar-10:
+Results with BReLU compared to ReLU on Cifar-10 with data augmentation:
 
 | Network         | ReLU           | BReLU run 1   | BReLU run 2 | BReLU run 3 | BReLU run 4 | BReLU run 5 | BreLU         |
 | :---            | :---:          | :---:         | :---:       | :---:       | :---:       | :---:       | ---:          |
 | ResNet-110      | 6.61 / 6.41 %  | 5.724 %       |             |             |             |             | 5.725 +- 0.0% |
 | DenseNet-BC-100 | 4.51 %         |               |             |             |             |             |               |
 | DenseNet-BC-190 | 3.46 %         |               |             |             |             |             |               |
+
+Results with BReLU compared to ReLU on Cifar-100 with data augmentation:
+
+| Network         | ReLU           | BReLU run 1   | BReLU run 2 | BReLU run 3 | BReLU run 4 | BReLU run 5 | BreLU         |
+| :---            | :---:          | :---:         | :---:       | :---:       | :---:       | :---:       | ---:          |
+| ResNet-110      | 27.22 %        |               |             |             |             |             | 0.0 +- 0.0%   |
+| DenseNet-BC-100 | 22.27 %        |               |             |             |             |             |               |
+| DenseNet-BC-190 | 17.18 %        |               |             |             |             |             |               |
 
 
 Training recipes
