@@ -173,7 +173,7 @@ function Trainer:learningRate(epoch)
         decay = epoch >= 122 and 2 or epoch >= 81 and 1 or 0
       end
    elseif self.opt.dataset == 'cifar100' then
-      if opt.netType == 'densenet' then
+      if self.opt.netType == 'densenet' then
         decay = epoch >= 225 and 2 or epoch >= 150 and 1 or 0
       else
         decay = epoch >= 122 and 2 or epoch >= 81 and 1 or 0
