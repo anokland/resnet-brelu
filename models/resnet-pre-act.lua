@@ -20,12 +20,10 @@
 
 local nn = require 'nn'
 require 'cunn'
-require 'BReLU'
 
 local Convolution = cudnn.SpatialConvolution
 local Avg = cudnn.SpatialAveragePooling
---local ReLU = cudnn.ReLU
-local ReLU = BReLU
+local ReLU = cudnn.ReLU
 local Max = nn.SpatialMaxPooling
 local SBatchNorm = nn.SpatialBatchNormalization
 
