@@ -83,13 +83,13 @@ function M.parse(arg)
       opt.shortcutType = opt.shortcutType == '' and 'B' or opt.shortcutType
       opt.nEpochs = opt.nEpochs == 0 and 90 or opt.nEpochs
    elseif opt.dataset == 'cifar10' then
-      -- Default shortcutType=A and nEpochs=164
+      -- Default shortcutType=A and nEpochs=300
       opt.shortcutType = opt.shortcutType == '' and 'A' or opt.shortcutType
-      opt.nEpochs = opt.nEpochs == 0 and 164 or opt.nEpochs
+      opt.nEpochs = opt.nEpochs == 0 and 300 or opt.nEpochs
    elseif opt.dataset == 'cifar100' then
-       -- Default shortcutType=A and nEpochs=164
+       -- Default shortcutType=A and nEpochs=300
        opt.shortcutType = opt.shortcutType == '' and 'A' or opt.shortcutType
-       opt.nEpochs = opt.nEpochs == 0 and 164 or opt.nEpochs
+       opt.nEpochs = opt.nEpochs == 0 and 300 or opt.nEpochs
    else
       cmd:error('unknown dataset: ' .. opt.dataset)
    end
