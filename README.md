@@ -13,7 +13,8 @@ https://github.com/liuzhuang13/DenseNet
 Then, the code is modified in the following ways:
 - Added command line option for replacing ReLU with BReLU (`BReLU`)
 - Added command line options for DenseNet (`growthRate`, `dropRate` and `bottleneck`)
-- Use command line option to decide learning rate decay for DenseNet as prescribed (`modelType`)
+- Train Cifar-10 and Cifar-100 networks for 300 epochs
+- Train Cifar-10 and Cifar-100 networks with learning rate decay at epoch 150 and 225 (as prescribed for densenet)
 - Added logging of training and test error to log.txt every epoch
 - Added logging of command line options to file opt.txt at startup
 - Added logging of model structure as text to model.txt at startup
@@ -23,19 +24,19 @@ The current implementation of BReLU does not support training on multiple GPU's.
 
 Results with BReLU compared to ReLU on Cifar-10 with data augmentation:
 
-| Network         | ReLU           | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
+| Network         | ReLU (own)     | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
 | :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
-| ResNet-110      | 6.61 / 6.41    | 5.724     |         |         |         |         | 5.725 +- 0.0 |
-| DenseNet-BC-100 | 4.51           |           |         |         |         |         |              |
-| DenseNet-BC-190 | 3.46 (SOTA)    |           |         |         |         |         |              |
+| ResNet-44       | 7.17 (6.44)    |           |         |         |         |         |              |
+| ResNet-110      | 6.61/6.41 ()   | 5.724     |         |         |         |         | 5.725 +- 0.0 |
+| DenseNet-BC-100 | 4.51 ()        |           |         |         |         |         |              |
 
 Results with BReLU compared to ReLU on Cifar-100 with data augmentation:
 
-| Network         | ReLU           | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
+| Network         | ReLU (own)     | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
 | :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
+| ResNet-44       | 27.76 ()       |           |         |         |         |         |              |
 | ResNet-110      | 27.22          |           |         |         |         |         | 0.0 +- 0.0   |
 | DenseNet-BC-100 | 22.27          |           |         |         |         |         |              |
-| DenseNet-BC-190 | 17.18 (SOTA)   |           |         |         |         |         |              |
 
 
 Training recipes
@@ -43,24 +44,19 @@ Training recipes
 
 ### CIFAR-10
 
-To train ResNet-20 on CIFAR-10 with 2 GPUs:
-
-```bash
-th main.lua -dataset cifar10 -nGPU 2 -batchSize 128 -depth 20
-```
-
-To train ResNet-110 instead just change the `-depth` flag:
-
-```bash
-th main.lua -dataset cifar10 -nGPU 2 -batchSize 128 -depth 110
-```
-
 To train a pre-activation ResNet-1001 with BReLU with 1 GPU:
 
 ```bash
 th main.lua -netType resnet-pre-act -depth 1001 -batchSize 64 -nGPU 1 -dataset cifar10 -nEpochs 200 -BReLU true
 ```
-To train a ResNet110 with BReLU with 1 GPU:
+
+To train a ResNet-44 with BReLU with 1 GPU:
+
+```bash
+th main.lua -netType resnet -depth 44 -batchSize 128 -nGPU 1 -dataset cifar10 -BReLU true
+```
+
+To train a ResNet-110 with BReLU with 1 GPU:
 
 ```bash
 th main.lua -netType resnet -depth 110 -batchSize 128 -nGPU 1 -dataset cifar10 -BReLU true
@@ -69,11 +65,11 @@ th main.lua -netType resnet -depth 110 -batchSize 128 -nGPU 1 -dataset cifar10 -
 To train a DenseNet-100 with BReLU with 1 GPU:
 
 ```bash
-th main.lua -netType densenet -depth 100 -growthRate 12 -nGPU 1 -dataset cifar10 -batchSize 64 -nEpochs 300 -optnet true -BReLU true
+th main.lua -netType densenet -depth 100 -batchSize 128 -growthRate 12 -nGPU 1 -dataset cifar10 -optnet true -BReLU true
 ```
 
 To train a DenseNet-190 with BReLU with 1 GPU:
 
 ```bash
-th main.lua -netType densenet -depth 190 -growthRate 40 -nGPU 1 -dataset cifar10 -batchSize 64 -nEpochs 300 -optnet true -BReLU true
+th main.lua -netType densenet -depth 190 -batchSize 64 -growthRate 40 -nGPU 1 -dataset cifar10 -optnet true -BReLU true
 ```
