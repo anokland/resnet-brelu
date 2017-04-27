@@ -43,7 +43,7 @@ function M.setup(opt, checkpoint)
    if opt.BReLU then
       print('Replacing cudnn.ReLU with nn.BReLU')
       model:replace(function(module)
-         return torch.type(module) == 'cudnn.ReLU' and nn.BReLU():cuda() or module
+         return torch.type(module) == 'cudnn.ReLU' and nn.BReLU(true):cuda() or module
       end)
    end
    
