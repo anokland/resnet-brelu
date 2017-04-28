@@ -24,18 +24,18 @@ The current implementation of BReLU does not support training on multiple GPU's.
 
 Results with BReLU compared to ReLU on Cifar-10 with data augmentation:
 
-| Network         | ReLU (own)     | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
-| :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
-| ResNet-44       | 7.17 (6.44)    |           |         |         |         |         |              |
-| ResNet-110      | 6.61/6.41 ()   | 5.724     |         |         |         |         | 5.725 +- 0.0 |
-| DenseNet-BC-100 | 4.51 ()        |           |         |         |         |         |              |
+| Network         | ReLU (own)       | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
+| :---            | :---             | :---      | :---    | :---    | :---    | :---    | :---         |
+| ResNet-44       | 7.17 (6.44)      | 6.49      |         |         |         |         |              |
+| ResNet-110      | 6.61/6.41 (6.92) | 5.760     |         |         |         |         | 5.76 +- 0.0  |
+| DenseNet-BC-100 | 4.51 ()          |           |         |         |         |         |              |
 
 Results with BReLU compared to ReLU on Cifar-100 with data augmentation:
 
 | Network         | ReLU (own)     | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
 | :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
-| ResNet-44       | 27.76 ()       |           |         |         |         |         |              |
-| ResNet-110      | 27.22          |           |         |         |         |         | 0.0 +- 0.0   |
+| ResNet-44       | 27.76 (29.4)   | 29.30     | 29.96   |         |         |         |              |
+| ResNet-110      | 27.22          | 27.74     |         |         |         |         | 27.74 +- 0.0 |
 | DenseNet-BC-100 | 22.27          |           |         |         |         |         |              |
 
 
