@@ -26,16 +26,16 @@ Results with BReLU compared to ReLU on Cifar-10 with data augmentation:
 
 | Network         | ReLU (own)       | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
 | :---            | :---             | :---      | :---    | :---    | :---    | :---    | :---         |
-| ResNet-44       | 7.17 (6.44)      | 6.49      | 6.80    | 6.64    |         |         |              |
-| ResNet-110      | 6.61/6.41 (6.92) | 5.76      | 6.10    | 5.86    |         |         | 0.00 +- 0.0  |
+| ResNet-44       | 7.17 (6.44)      | 6.49      | 6.80    | 6.64    | 6.61    |         |              |
+| ResNet-110      | 6.61/6.41 (6.92) | 5.76      | 6.10    | 5.86    | 6.07    | 6.37    | 0.00 +- 0.0  |
 | DenseNet-BC-100 | 4.51 ()          |           |         |         |         |         |              |
 
 Results with BReLU compared to ReLU on Cifar-100 with data augmentation:
 
 | Network         | ReLU (own)     | BReLU 1   | BReLU 2 | BReLU 3 | BReLU 4 | BReLU 5 | BreLU        |
 | :---            | :---           | :---      | :---    | :---    | :---    | :---    | :---         |
-| ResNet-44       | 27.76 (29.4)   | 29.30     | 29.96   | 29.85   |         |         |              |
-| ResNet-110      | 27.22          | 27.74     | 28.04   |         |         |         | 0.00 +- 0.0 |
+| ResNet-44       | 27.76 (29.4)   | 29.30     | 29.96   | 29.85   | 29.67   | 28.91   |              |
+| ResNet-110      | 27.22          | 27.74     | 28.04   | 28.41   | 28.11   |         | 0.00 +- 0.0 |
 | DenseNet-BC-100 | 22.27          |           |         |         |         |         |              |
 
 
