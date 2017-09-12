@@ -14,6 +14,7 @@ require 'nn'
 require 'cunn'
 require 'cudnn'
 require 'models/BReLU'
+require 'models/BELU'
 
 local M = {}
 
@@ -43,10 +44,26 @@ function M.setup(opt, checkpoint)
    if opt.BReLU then
       print('Replacing cudnn.ReLU with nn.BReLU')
       model:replace(function(module)
-         return torch.type(module) == 'cudnn.ReLU' and nn.BReLU(true):cuda() or module
+         return torch.type(module) == 'cudnn.ReLU' and nn.BReLU(false):cuda() or module
       end)
    end
    
+  -- Replace ReLU with BELU
+   if opt.BELU then
+      print('Replacing cudnn.ReLU with nn.BELU')
+      model:replace(function(module)
+         return torch.type(module) == 'cudnn.ReLU' and nn.BELU():cuda() or module
+      end)
+   end
+   
+   -- Replace ReLU with ELU
+   if opt.ELU then
+      print('Replacing cudnn.ReLU with nn.ELU')
+      model:replace(function(module)
+         return torch.type(module) == 'cudnn.ReLU' and nn.ELU():cuda() or module
+      end)
+   end
+
    -- optnet is an general library for reducing memory usage in neural networks
    if opt.optnet then
       local optnet = require 'optnet'
