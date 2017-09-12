@@ -45,6 +45,8 @@ function M.parse(arg)
    cmd:option('-retrain',      'none',   'Path to model to retrain with')
    cmd:option('-optimState',   'none',   'Path to an optimState to reload from')
    cmd:option('-BReLU',        'false',  'Replace ReLU with BReLU (Bipolar Rectified Linear Units)')
+   cmd:option('-BELU',         'false',  'Replace ReLU with BELU (Bipolar Exponential Linear Units)')
+   cmd:option('-ELU',          'false',  'Replace ReLU with  ELU (Exponential Linear Units)')
    ---------- Model options ----------------------------------
    cmd:option('-shareGradInput',  'false', 'Share gradInput tensors to reduce memory usage')
    cmd:option('-optnet',          'false', 'Use optnet to reduce memory usage')
@@ -65,6 +67,8 @@ function M.parse(arg)
    opt.optnet = opt.optnet ~= 'false'
    opt.resetClassifier = opt.resetClassifier ~= 'false'
    opt.BReLU = opt.BReLU ~= 'false'
+   opt.BELU = opt.BELU ~= 'false'
+   opt.ELU = opt.ELU ~= 'false'
    opt.bottleneck = opt.bottleneck ~= 'false'
 
    if not paths.dirp(opt.save) and not paths.mkdir(opt.save) then
